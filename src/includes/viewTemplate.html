@@ -9,9 +9,18 @@
   <body>
     <form method="post" class="pull-right">
       {{&csrf_token}}
-      <button type="submit" class="btn btn-success" {{#isCompleted}}disabled="disabled"{{/isCompleted}}>
-        {{^isCompleted}}{{buttonText}} <i class="icon-check icon-white"></i>{{/isCompleted}}
-        {{#isCompleted}}{{buttonTextDone}} <i class="icon-ok icon-white"></i>{{/isCompleted}}
+      {{#error}}{{error}}<br/>{{/error}}
+      
+      {{^isCompleted}}
+        <button type="submit" class="btn">
+          {{buttonText}}
+        </button>
+      {{/isCompleted}}
+      {{#isCompleted}}
+        <button type="button" class="btn btn-success">
+          {{buttonText}} <i class="icon-ok icon-white"></i>
+        </button>
+      {{/isCompleted}}
       </button>
     </form>
     <script>

@@ -10,12 +10,13 @@ checkPermission 'read', accessDeniedTemplate, ->
 	view.isCompleted = false
 
 	if request.method is 'POST'
-		view.isCompleted = request.data.isCompleted
+		view.isCompleted = true
 		view.updated = true
 		marksObject = {}
 		marksObject[request.user] = {
 			completed: view.isCompleted
 		}
+		
 		try
 			OpenLearning.activity.submit request.user
 			OpenLearning.activity.setMarks marksObject
