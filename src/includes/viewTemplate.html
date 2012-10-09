@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ quizTitle }}</title>
+    <link rel="stylesheet" href="/common/bootstrap/css/bootstrap.min.css" type="text/css" media="screen" charset="utf-8">
+    <script src="/common/jquery.min.js"></script>
+	{{&app_init_js}}
+  </head>
+  <body>
+    <form method="post" class="pull-right">
+      {{&csrf_token}}
+      <button type="submit" class="btn btn-success" {{#isCompleted}}disabled="disabled"{{/isCompleted}}>
+        {{^isCompleted}}{{buttonText}} <i class="icon-check icon-white"></i>{{/isCompleted}}
+        {{#isCompleted}}{{buttonTextDone}} <i class="icon-ok icon-white"></i>{{/isCompleted}}
+      </button>
+    </form>
+    <script>
+      window.app.ready( function() {
+        window.app.resize(970, 200);
+      } );
+    </script>
+    {{#updated}}
+    <script>
+      window.app.ready( function() {
+        window.app.sendMessage( 'updateProgress', {} );
+      } );
+    </script>
+    {{/updated}}
+  </body>
+</html>
