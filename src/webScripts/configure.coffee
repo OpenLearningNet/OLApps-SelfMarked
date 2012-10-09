@@ -1,5 +1,5 @@
 include "mustache.js"
-include "guards.js"
+include "util.js"
 
 template = include "adminTemplate.html"
 accessDeniedTemplate = include "accessDeniedTemplate.html"
@@ -10,14 +10,15 @@ booleanFields = []
 setDefaults = (view) ->
 	if not view.buttonText?
 		view.buttonText = "I've Done This"
-	if not view.buttonTextDone
+
+	if not view.buttonTextDone?
 		view.buttonTextDone = "Marked as Done"
 
 # POST and GET controllers
 post = ->
 	# grab data from POST
 	view = {}
-	
+
 	# this app always has something embedded in the activity page
 	view.isEmbedded = true
 
@@ -54,7 +55,7 @@ get = ->
 		# build view from page data
 		for field in fields
 			view[field] = data[field]
-	
+
 	return view
 
 
