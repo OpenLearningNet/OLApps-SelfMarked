@@ -7,22 +7,25 @@
 	{{&app_init_js}}
   </head>
   <body>
-    <form method="post" class="pull-right">
-      {{&csrf_token}}
-      {{#error}}{{error}}<br/>{{/error}}
-      
-      {{^isCompleted}}
-        <button type="submit" class="btn">
-          {{buttonText}}
+    <center>
+      <hr>
+      <form method="post">
+        {{&csrf_token}}
+        {{#error}}{{error}}<br/>{{/error}}
+        
+        {{^isCompleted}}
+          <button type="submit" class="btn">
+            {{buttonText}}
+          </button>
+        {{/isCompleted}}
+        {{#isCompleted}}
+          <button type="button" class="btn btn-success">
+            {{buttonTextDone}} <i class="icon-ok icon-white"></i>
+          </button>
+        {{/isCompleted}}
         </button>
-      {{/isCompleted}}
-      {{#isCompleted}}
-        <button type="button" class="btn btn-success">
-          {{buttonText}} <i class="icon-ok icon-white"></i>
-        </button>
-      {{/isCompleted}}
-      </button>
-    </form>
+      </form>
+    </center>
     <script>
       window.app.ready( function() {
         window.app.resize(970, 200);
