@@ -27,7 +27,8 @@ checkPermission 'read', accessDeniedTemplate, ->
 			marks = (OpenLearning.activity.getMarks [request.user])
 			view.isCompleted = marks[request.user].completed
 		catch err
-			view.error = 'Something went wrong: Unable to load data'
+			view.isCompleted = false
+			#view.error = 'Something went wrong: Unable to load data'
 
 	# get activity page data
 	try
