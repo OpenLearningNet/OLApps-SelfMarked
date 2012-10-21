@@ -11,6 +11,7 @@
       <hr>
       <form method="post">
         {{&csrf_token}}
+        <input type="hidden" name="action" value="markOff">
         {{#error}}{{error}}<br/>{{/error}}
         
         {{^isCompleted}}

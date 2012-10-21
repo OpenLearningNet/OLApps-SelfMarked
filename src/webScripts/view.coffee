@@ -9,7 +9,7 @@ checkPermission 'read', accessDeniedTemplate, ->
 	
 	view.isCompleted = false
 
-	if request.method is 'POST'
+	if request.method is 'POST' and request.data.action == 'markOff'
 		view.isCompleted = true
 		view.updated = true
 		marksObject = {}
