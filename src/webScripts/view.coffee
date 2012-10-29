@@ -15,6 +15,8 @@ checkPermission 'read', accessDeniedTemplate, ->
 		marksObject = {}
 		marksObject[request.user] = {
 			completed: view.isCompleted
+			comments: ''
+			mark: 1
 		}
 		
 		try
