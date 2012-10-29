@@ -21,7 +21,9 @@ checkPermission 'read', accessDeniedTemplate, ->
 		
 		try
 			OpenLearning.activity.submit request.user
-			OpenLearning.activity.setMarks marksObject
+			view.successfulMarks = OpenLearning.activity.setMarks marksObject
+			if view.successfulMarks.length is 0
+				view.error = 'Something went wrong: Did not successfully save mark.'
 		catch err
 			view.error = 'Something went wrong: Unable to save data'
 	else
